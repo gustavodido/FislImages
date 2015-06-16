@@ -2,32 +2,25 @@
 	'use strict'
 
 	$(document).ready(function() {
-		$("#panelPhotos").hide();
-		$("#panelThanks").hide();
-
-		$("#btnGoPhoto").click(function() {
-			$("#panelSettings").hide("slide", { direction: "left" }, 1200, 
-				function() 
-				{ 
-					$("#panelPhotos").show("slide", { direction: "right" }, 1200);
-					startCamera();
-				});	
-		});
-
-		$("#btnSnapPhoto").click(function() {
-				$("#panelPhotos").hide("slide", { direction: "left" }, 1200, 
-				function() 
-				{ 
-					$("#panelThanks").show("slide", { direction: "right" }, 1200);
-				});	
-		});
+		startCamera();
+		$("#btnSnap").click(takePhoto);	
 	});
+
+	function takePhoto()
+	{
+		var canvas = document.getElementById("canvas"),
+			context = canvas.getContext("2d"),
+			video = document.getElementById("video");
+
+		// Trigger photo take
+		document.getElementById("snap").addEventListener("click", function() {
+			context.drawImage(video, 0, 0, 640, 480);
+		});
+	}
 
 	function startCamera()	{
 		// Grab elements, create settings, etc.
-		var canvas = document.getElementById("canvas"),
-			context = canvas.getContext("2d"),
-			video = document.getElementById("video"),
+		var	video = document.getElementById("video"),
 			videoObj = { "video": true },
 			errBack = function(error) {
 				console.log("Video capture error: ", error.code); 
