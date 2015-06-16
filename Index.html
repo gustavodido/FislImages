@@ -1,49 +1,83 @@
-<<!DOCTYPE html>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-	<title></title>
+	<title>ThoughtWorks - Fisl</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap-theme.min.css" rel="stylesheet">
+    <link href="css/global.css" rel="stylesheet">
 </head>
 <body>
+<div class"container-fluid">
+	<div class="row">
+		<div class="col-md-2"></div>
+		<div class="col-md-8" id="panelHolder">
+
+			<!-- Settings -->
+			<div class="panel panel-default" id="panelSettings">
+  				<div class="panel-body">
+  						<div class="form-group">
+						    <label for="email">Email address</label>
+						    <input type="email" class="form-control super-input" id="email" name="email" placeholder="Your email">
+  						</div>
+  						<div class="form-group">
+    						<label for="firstName">First Name</label>
+    						<input type="text" class="form-control super-input" id="firstName" name="firstName" placeholder="Your first name">
+  						</div>
+  						<div class="form-group">
+    						<label for="lastName">Last Name</label>
+    						<input type="text" class="form-control super-input" id="lastName" placeholder="Your last name">
+  						</div>
+	  					<div class="text-right">
+  							<button type="submit" class="btn btn-primary super-button" id="btnGoPhoto">Next</button>
+  						</div>
+					</div>
+			</div>
+
+
+			<!-- Photos -->
+			<div class="panel panel-default" id="panelPhotos">
+  				<div class="panel-body">
+					<video id="video" width="640" height="480" autoplay></video>
+	  					<div class="text-right">
+  							<button type="submit" class="btn btn-primary super-button" id="btnSnapPhoto">Snap Photo</button>
+  						</div>
+					<canvas id="canvas" class="hide" width="640" height="480"></canvas>
+				</div>
+			</div>
+
+			<!-- Thanks -->
+			<div class="panel panel-default" id="panelThanks">
+  				<div class="panel-body">
+					<div>
+						Thank you!!
+					</div>
+				</div>
+			</div>
+
+		</div>
+		<div class="col-md-2"></div>
+	</div>
+</div>
+
+<script src="js/jquery-2.1.4.min.js"></script>
+<script src="js/jquery-ui.min.js"></script>
+<script src="js/bootstrap.min.js"></script> 
+<script src="js/global.js"></script> 
+
 
 <!-- Camera and Canvas -->
 
-<video id="video" width="640" height="480" autoplay></video>
-<button id="snap">Snap Photo</button>
-<canvas id="canvas" width="640" height="480"></canvas>
+<!-- 
+
 
 <script type="text/javascript">
 
 	// Put event listeners into place
 	window.addEventListener("DOMContentLoaded", function() {
-		// Grab elements, create settings, etc.
-		var canvas = document.getElementById("canvas"),
-			context = canvas.getContext("2d"),
-			video = document.getElementById("video"),
-			videoObj = { "video": true },
-			errBack = function(error) {
-				console.log("Video capture error: ", error.code); 
-			};
-
-		// Put video listeners into place
-		if(navigator.getUserMedia) { // Standard
-			navigator.getUserMedia(videoObj, function(stream) {
-				video.src = stream;
-				video.play();
-			}, errBack);
-		} else if(navigator.webkitGetUserMedia) { // WebKit-prefixed
-			navigator.webkitGetUserMedia(videoObj, function(stream){
-				video.src = window.webkitURL.createObjectURL(stream);
-				video.play();
-			}, errBack);
-		}
-		else if(navigator.mozGetUserMedia) { // Firefox-prefixed
-			console.log("here")
-
-			navigator.mozGetUserMedia(videoObj, function(stream){
-				video.src = window.URL.createObjectURL(stream);
-				video.play();
-			}, errBack);
-		}
+		
 
 		// Trigger photo take
 		document.getElementById("snap").addEventListener("click", function() {
@@ -53,6 +87,6 @@
 	}, false);
 
 </script>
-
+ -->
 </body>
 </html>
